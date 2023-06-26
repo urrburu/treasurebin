@@ -18,7 +18,9 @@ public class Comment implements Article {
     @ManyToOne(fetch = FetchType.LAZY)@Nullable
     private Comment comment;
 
-    @ManyToOne
-    private Article motherArticle;
+    @Embedded
+    private CommentType commentType;
+
+
 
 }
