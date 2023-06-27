@@ -3,10 +3,13 @@ package com.uruburu.treasuebin.comment;
 import com.uruburu.treasuebin.article.Article;
 import com.uruburu.treasuebin.treasure.Treasure;
 import jakarta.persistence.*;
+import lombok.*;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
-@Entity
+@Entity@Builder@Getter@Setter
+@NoArgsConstructor@AllArgsConstructor
 public class Comment implements Article {
 
     @Id@GeneratedValue
@@ -20,6 +23,9 @@ public class Comment implements Article {
 
     @Embedded
     private CommentType commentType;
+
+    @OneToMany(mappedBy = "Comment")
+    private List<Comment> coComments;
 
 
 
