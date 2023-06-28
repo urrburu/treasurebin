@@ -2,13 +2,11 @@ package com.uruburu.treasuebin.treasure;
 
 import com.uruburu.treasuebin.article.Article;
 import com.uruburu.treasuebin.comment.Comment;
-import com.uruburu.treasuebin.price.Price;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.query.sql.internal.ParameterRecognizerImpl;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -33,9 +31,19 @@ public class Treasure implements Article{
     @OneToMany(mappedBy = "Comment")
     private List<Comment> comments;
 
-    @OneToOne(mappedBy = "price")
-    private Price price;
+    private Integer initialPrice;
 
+    private Integer currentPrice;
 
+    private Integer maginotPrice;
 
+    private Integer minusPrice;
+
+    private Boolean isSold;
+
+    private TimeGap timeGap;
+
+    public Integer getTimeGap() {
+        return timeGap.getNum();
+    }
 }
