@@ -24,6 +24,8 @@ public abstract class Comment implements Article {
 
     private LocalDateTime createdAt;
 
+    private LocalDateTime lastModified;
+
     @OneToMany(mappedBy = "comment")
     private List<Comment> comments ;
 
@@ -33,6 +35,7 @@ public abstract class Comment implements Article {
     }
     public Comment (String contents){
         this.createdAt = LocalDateTime.now();
+        this.lastModified = LocalDateTime.now();
         this.contents = contents;
         this.comments = new ArrayList<>();
     }

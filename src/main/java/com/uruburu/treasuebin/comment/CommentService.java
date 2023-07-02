@@ -10,11 +10,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class CommentService {
-    private CommentRepository commentRepository;
+    private final CommentRepository commentRepository;
+
 
     public Comment makeNewComment(CommentDTO commentDTO){
         if(commentDTO.getMother().getClass() == Treasure.class){
@@ -28,6 +31,15 @@ public class CommentService {
             return comment;
         }
         return null;
+    }
+
+    public Comment updateCommentContents(Comment comment, CommentDTO commentDTO){
+        Comment modifiedComment = commentRepository.findById(comment.getId());
+        if(modifiedComment.equals(null)) return null;
+        modifiedComment.setContents(commentDTO.getContents());
+        modifiedComment.setLastModified(LocalDateTime.now());
+        commentRepository.save(modifiedComment);
+        return modifiedComment;
     }
 
 }

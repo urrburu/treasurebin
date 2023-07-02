@@ -24,7 +24,11 @@ public class Treasure implements Article{
 
     private String contents;
 
-    private LocalDateTime writeInTime;
+    private LocalDateTime createdAt;
+
+    private LocalDateTime lastModifiedAt;
+
+    private LocalDateTime willExpireTime;
 
     private Boolean isTrash;
 
@@ -44,9 +48,10 @@ public class Treasure implements Article{
     public Integer getTimeGap() {return timeGap.getNum();}
 
     public Integer getCurrentPrice(){
-        Integer time = writeInTime.compareTo(LocalDateTime.now());
+        Integer time = lastModifiedAt.compareTo(LocalDateTime.now());
         Integer priceGap = (time/getTimeGap()) * minusPrice;
-        return initialPrice - priceGap;
+        if(initialPrice - priceGap > maginotPrice)return initialPrice - priceGap;
+        return maginotPrice;
     }
 
 }
