@@ -1,7 +1,7 @@
 package com.uruburu.treasuebin.treasure;
 
 import com.uruburu.treasuebin.article.Article;
-import com.uruburu.treasuebin.comment.Comment;
+import com.uruburu.treasuebin.comment.Entity.Comment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,8 +33,6 @@ public class Treasure implements Article{
 
     private Integer initialPrice;
 
-    private Integer currentPrice;
-
     private Integer maginotPrice;
 
     private Integer minusPrice;
@@ -43,7 +41,12 @@ public class Treasure implements Article{
 
     private TimeGap timeGap;
 
-    public Integer getTimeGap() {
-        return timeGap.getNum();
+    public Integer getTimeGap() {return timeGap.getNum();}
+
+    public Integer getCurrentPrice(){
+        Integer time = writeInTime.compareTo(LocalDateTime.now());
+        Integer priceGap = (time/getTimeGap()) * minusPrice;
+        return initialPrice - priceGap;
     }
+
 }
