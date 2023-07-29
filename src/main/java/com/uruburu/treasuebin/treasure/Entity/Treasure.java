@@ -1,12 +1,14 @@
-package com.uruburu.treasuebin.treasure;
+package com.uruburu.treasuebin.treasure.Entity;
 
 import com.uruburu.treasuebin.article.Article;
 import com.uruburu.treasuebin.comment.Entity.Comment;
+import com.uruburu.treasuebin.treasure.TimeGap;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -44,6 +46,14 @@ public class Treasure implements Article{
     private Boolean isSold;
 
     private TimeGap timeGap;
+
+    //사진파일 저장용
+    @Value("${file.dir}/")
+    private String fileDirPath;
+
+    //좋아요 기능
+    private Integer like;
+
 
     public Integer getTimeGap() {return timeGap.getNum();}
 

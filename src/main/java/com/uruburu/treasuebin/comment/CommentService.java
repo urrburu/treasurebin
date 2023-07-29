@@ -1,11 +1,10 @@
 package com.uruburu.treasuebin.comment;
 
-import com.uruburu.treasuebin.article.Article;
 import com.uruburu.treasuebin.comment.DTO.CommentDTO;
 import com.uruburu.treasuebin.comment.Entity.Cocomment;
 import com.uruburu.treasuebin.comment.Entity.Comment;
 import com.uruburu.treasuebin.comment.Entity.TreasureComment;
-import com.uruburu.treasuebin.treasure.Treasure;
+import com.uruburu.treasuebin.treasure.Entity.Treasure;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

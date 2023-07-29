@@ -1,6 +1,6 @@
 package com.uruburu.treasuebin.comment.Entity;
 
-import com.uruburu.treasuebin.treasure.Treasure;
+import com.uruburu.treasuebin.treasure.Entity.Treasure;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 
